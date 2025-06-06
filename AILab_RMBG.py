@@ -55,7 +55,7 @@ AVAILABLE_MODELS = {
         "files": {
             "inspyrenet.safetensors": "inspyrenet.safetensors"
         },
-        "cache_dir": "INSPYRENET"
+        "cache_dir": "inspyrenet"
     },
     "BEN": {
         "type": "ben",
