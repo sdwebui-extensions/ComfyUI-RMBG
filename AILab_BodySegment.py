@@ -54,6 +54,8 @@ class BodySegment:
         self.model = None
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "body_segment")
         self.model_file = "deeplabv3p-resnet50-human.onnx"
+        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
+            self.cache_dir = "/stable-diffusion-cache/models/BiRefNet"
     
     @classmethod
     def INPUT_TYPES(cls):

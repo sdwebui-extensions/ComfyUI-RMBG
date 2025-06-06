@@ -113,6 +113,8 @@ class FashionSegmentClothing:
         self.processor = None
         self.model = None
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "segformer_fashion")
+        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
+            self.cache_dir = "/stable-diffusion-cache/models/BiRefNet/segformer_fashion"
         self.class_map = {
             "Unlabelled": 0, "shirt, blouse": 1, "top, t-shirt, sweatshirt": 2, "sweater": 3,
             "cardigan": 4, "jacket": 5, "vest": 6, "pants": 7, "shorts": 8, "skirt": 9, "coat": 10,

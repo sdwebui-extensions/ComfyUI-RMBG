@@ -26,6 +26,8 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # Add model path
 folder_paths.add_model_folder_path("rmbg", os.path.join(folder_paths.models_dir, "RMBG"))
+if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
+    folder_paths.add_model_folder_path("rmbg", "/stable-diffusion-cache/models/BiRefNet")
 
 # Model configuration
 MODEL_CONFIG = {
@@ -197,6 +199,8 @@ class BiRefNetModel:
         self.model = None
         self.current_model_version = None
         self.base_cache_dir = os.path.join(folder_paths.models_dir, "RMBG")
+        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
+            self.base_cache_dir = "/stable-diffusion-cache/models/BiRefNet"
     
     def get_cache_dir(self, model_name):
         return os.path.join(self.base_cache_dir, MODEL_CONFIG[model_name]["cache_dir"])

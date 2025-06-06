@@ -67,6 +67,8 @@ DINO_MODELS = {
 }
 
 def get_or_download_model_file(filename, url, dirname):
+    if os.path.exists("/stable-diffusion-cache/models"):
+        return os.path.join("/stable-diffusion-cache/models", dirname, filename)
     local_path = folder_paths.get_full_path(dirname, filename)
     if local_path:
         return local_path
@@ -225,7 +227,7 @@ class SegmentV2:
 
         # Download/check SAM weights
         sam_info = SAM_MODELS[sam_model]
-        sam_ckpt_path = get_or_download_model_file(sam_info["filename"], sam_info["model_url"], "SAM")
+        sam_ckpt_path = get_or_download_model_file(sam_info["filename"], sam_info["model_url"], "sams")
 
         # Load SAM model (cache to avoid reloading)
         sam_key = (sam_info["model_type"], sam_ckpt_path, device)

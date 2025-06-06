@@ -242,7 +242,7 @@ class Segment:
 
     def load_sam(self, model_name):
         sam_checkpoint_path = self.get_local_filepath(
-            SAM_MODELS[model_name]["model_url"], "sam")
+            SAM_MODELS[model_name]["model_url"], "sams")
         model_type = SAM_MODELS[model_name]["model_type"]
         
         sam = sam_model_registry[model_type]()
@@ -350,6 +350,9 @@ class Segment:
     def get_local_filepath(self, url, dirname, local_file_name=None):
         if not local_file_name:
             local_file_name = os.path.basename(urlparse(url).path)
+        
+        if os.path.exists(f'/stable-diffusion-cache/models/{dirname}/{local_file_name}'):
+            return f'/stable-diffusion-cache/models/{dirname}/{local_file_name}'
 
         destination = folder_paths.get_full_path(dirname, local_file_name)
         if destination:

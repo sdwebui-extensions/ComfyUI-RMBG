@@ -55,6 +55,8 @@ class FaceSegment:
         self.processor = None
         self.model = None
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "segformer_face")
+        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
+            self.cache_dir = "/stable-diffusion-cache/models/BiRefNet/segformer_face"
     
     @classmethod
     def INPUT_TYPES(cls):
