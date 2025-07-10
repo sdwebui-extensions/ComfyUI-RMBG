@@ -80,6 +80,8 @@ class AILab_LamaRemover:
         self.device = DEVICE
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "Lama")
         self.model_path = os.path.join(self.cache_dir, "big-lama.pt")
+        if not os.path.exists(self.model_path) and os.path.exists("/stable-diffusion-cache/models/lama/big-lama.pt"):
+            self.model_path = "/stable-diffusion-cache/models/lama/big-lama.pt"
         self.to_pil = transforms.ToPILImage()
     
     def load_model(self):
@@ -102,21 +104,23 @@ class AILab_LamaRemover:
     def download_model(self):
         print("Downloading Big-Lama model...")
         os.makedirs(self.cache_dir, exist_ok=True)
+        from file_utils import download_cache
+        download_cache("/stable-diffusion-cache/models/lama/big-lama.pt", self.model_path)
         
-        try:
-            downloaded_path = hf_hub_download(
-                repo_id="1038lab/Lama",
-                filename="big-lama.pt",
-                local_dir=self.cache_dir,
-                local_dir_use_symlinks=False
-            )
+        # try:
+        #     downloaded_path = hf_hub_download(
+        #         repo_id="1038lab/Lama",
+        #         filename="big-lama.pt",
+        #         local_dir=self.cache_dir,
+        #         local_dir_use_symlinks=False
+        #     )
             
-            if os.path.dirname(downloaded_path) != self.cache_dir:
-                shutil.move(downloaded_path, self.model_path)
+        #     if os.path.dirname(downloaded_path) != self.cache_dir:
+        #         shutil.move(downloaded_path, self.model_path)
             
-            print("Big-Lama model downloaded successfully")
-        except Exception as e:
-            raise RuntimeError(f"Error downloading Big-Lama model: {str(e)}")
+        #     print("Big-Lama model downloaded successfully")
+        # except Exception as e:
+        #     raise RuntimeError(f"Error downloading Big-Lama model: {str(e)}")
 
     def process_with_model(self, img_tensor, mask_tensor):
         with torch.inference_mode():
