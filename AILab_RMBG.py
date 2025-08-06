@@ -92,8 +92,8 @@ class BaseModelLoader:
         self.model = None
         self.current_model_version = None
         self.base_cache_dir = os.path.join(folder_paths.models_dir, "RMBG")
-        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
-            self.base_cache_dir = "/stable-diffusion-cache/models/BiRefNet"
+        if os.path.exists(os.path.join(folder_paths.cache_dir, "models/BiRefNet")):
+            self.base_cache_dir = os.path.join(folder_paths.cache_dir, "models/BiRefNet")
     
     def get_cache_dir(self, model_name):
         cache_path = os.path.join(self.base_cache_dir, AVAILABLE_MODELS[model_name]["cache_dir"])

@@ -57,8 +57,8 @@ class ClothesSegment:
         self.processor = None
         self.model = None
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "segformer_clothes")
-        if os.path.exists("/stable-diffusion-cache/models/BiRefNet"):
-            self.cache_dir = "/stable-diffusion-cache/models/BiRefNet/segformer_clothes"
+        if os.path.exists(os.path.join(folder_paths.cache_dir, "models/BiRefNet")):
+            self.cache_dir = os.path.join(folder_paths.cache_dir, "models/BiRefNet/segformer_clothes")
     
     @classmethod
     def INPUT_TYPES(cls):

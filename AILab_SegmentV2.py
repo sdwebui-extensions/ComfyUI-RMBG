@@ -67,8 +67,8 @@ DINO_MODELS = {
 }
 
 def get_or_download_model_file(filename, url, dirname):
-    if os.path.exists("/stable-diffusion-cache/models"):
-        return os.path.join("/stable-diffusion-cache/models", dirname, filename)
+    if os.path.exists(os.path.join(folder_paths.cache_dir, "models")):
+        return os.path.join(folder_paths.cache_dir, "models", dirname, filename)
     local_path = folder_paths.get_full_path(dirname, filename)
     if local_path:
         return local_path

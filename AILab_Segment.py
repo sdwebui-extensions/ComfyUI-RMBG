@@ -351,8 +351,8 @@ class Segment:
         if not local_file_name:
             local_file_name = os.path.basename(urlparse(url).path)
         
-        if os.path.exists(f'/stable-diffusion-cache/models/{dirname}/{local_file_name}'):
-            return f'/stable-diffusion-cache/models/{dirname}/{local_file_name}'
+        if os.path.exists(os.path.join(folder_paths.cache_dir, f'models/{dirname}/{local_file_name}')):
+            return os.path.join(folder_paths.cache_dir, f'models/{dirname}/{local_file_name}')
 
         destination = folder_paths.get_full_path(dirname, local_file_name)
         if destination:

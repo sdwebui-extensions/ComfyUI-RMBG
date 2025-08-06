@@ -80,8 +80,8 @@ class AILab_LamaRemover:
         self.device = DEVICE
         self.cache_dir = os.path.join(folder_paths.models_dir, "RMBG", "Lama")
         self.model_path = os.path.join(self.cache_dir, "big-lama.pt")
-        if not os.path.exists(self.model_path) and os.path.exists("/stable-diffusion-cache/models/lama/big-lama.pt"):
-            self.model_path = "/stable-diffusion-cache/models/lama/big-lama.pt"
+        if not os.path.exists(self.model_path) and os.path.exists(os.path.join(folder_paths.cache_dir, "models/lama/big-lama.pt")):
+            self.model_path = os.path.join(folder_paths.cache_dir, "models/lama/big-lama.pt")
         self.to_pil = transforms.ToPILImage()
     
     def load_model(self):
