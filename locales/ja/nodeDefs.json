@@ -133,7 +133,7 @@
       "sweater": { "name": "セーター" },
       "hood": { "name": "フード" },
       "shirt, blouse": { "name": "シャツ, ブルゾン" },
-      "top, t-shirt, sweatshirt": { "name": "Tシャツ, Tシャツ, スウォッチ" },
+      "top, t-shirt, sweatshirt": { "name": "トップス, Tシャツ, スウォッチ" },
       "sleeve": { "name": "袖" },
       "dress": { "name": "ドレス" },
       "jumpsuit": { "name": "ジャンプスーツ" },
@@ -250,8 +250,37 @@
   "AILab_LoadImage": {
     "display_name": "画像を読み込む (RMBG) 🖼️",
     "inputs": {
+      "image_path_or_URL": { "name": "画像パスまたはURL" },
       "image": { "name": "画像" },
       "mask_channel": { "name": "マスクチャネル" },
+      "upscale_method": { "name": "アップスケール方法" },
+      "scale_by": { "name": "スケール比" },
+      "resize_mode": { "name": "リサイズモード" },
+      "size": { "name": "リサイズサイズ" }
+    },
+    "outputs": {
+      "2": { "name": "幅" },
+      "3": { "name": "高さ" }
+    }
+  },
+  "AILab_LoadImageSimple": {
+    "display_name": "画像を読み込む シンプル (RMBG) 🖼️",
+    "inputs": {
+      "image_path_or_URL": { "name": "画像パスまたはURL" },
+      "image": { "name": "画像" }
+    },
+    "outputs": {
+      "1": { "name": "幅" },
+      "2": { "name": "高さ" }
+    }
+  },
+  "AILab_LoadImageAdvanced": {
+    "display_name": "画像を読み込む 高度 (RMBG) 🖼️",
+    "inputs": {
+      "image_path_or_URL": { "name": "画像パスまたはURL" },
+      "image": { "name": "画像" },
+      "mask_channel": { "name": "マスクチャネル" },
+      "upscale_method": { "name": "アップスケール方法" },
       "scale_by": { "name": "スケール比" },
       "resize_mode": { "name": "リサイズモード" },
       "size": { "name": "リサイズサイズ" }
@@ -414,6 +443,22 @@
       "1": { "name": "マスク" },
       "2": { "name": "幅" },
       "3": { "name": "高さ" }
+    }
+  },
+  "AILab_ReferenceLatentMask": {
+    "display_name": "Kontext 参考潜伏マスク (RMBG) 🎭",
+    "inputs": {
+      "conditioning": { "name": "条件" },
+      "latent": { "name": "潜伏" },
+      "mask": { "name": "マスク" },
+      "expand": { "name": "拡張" },
+      "blur": { "name": "ぼかし" },
+      "mask_only": { "name": "マスクのみ" }
+    },
+    "outputs": {
+      "0": { "name": "条件" },
+      "1": { "name": "潜伏" },
+      "2": { "name": "マスク" }
     }
   }
 }

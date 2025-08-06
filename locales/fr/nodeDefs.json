@@ -133,7 +133,7 @@
       "sweater": { "name": "Pull" },
       "hood": { "name": "Capuche" },
       "shirt, blouse": { "name": "Chemise, blouse" },
-      "top, t-shirt, sweatshirt": { "name": "T-shirt, T-shirt, Sweatshirt" },
+      "top, t-shirt, sweatshirt": { "name": "haut, t-shirt, sweat-shirtt" },
       "sleeve": { "name": "Manche" },
       "dress": { "name": "Robe" },
       "jumpsuit": { "name": "Combinaison" },
@@ -250,8 +250,36 @@
   "AILab_LoadImage": {
     "display_name": "Charger l'image (RMBG) 🖼️",
     "inputs": {
+      "image_path_or_URL": { "name": "Chemin ou URL de l'image" },
+      "image": { "name": "Image" },
+      "upscale_method": { "name": "Méthode d'agrandissement" },
+      "scale_by": { "name": "Échelle" },
+      "resize_mode": { "name": "Mode de redimensionnement" },
+      "size": { "name": "Taille" }
+    },
+    "outputs": {
+      "2": { "name": "LARGEUR" },
+      "3": { "name": "HAUTEUR" }
+    }
+  },
+  "AILab_LoadImageSimple": {
+    "display_name": "Charger l'image simple (RMBG) 🖼️",
+    "inputs": {
+      "image_path_or_URL": { "name": "Chemin ou URL de l'image" },
+      "image": { "name": "Image" }
+    },
+    "outputs": {
+      "1": { "name": "LARGEUR" },
+      "2": { "name": "HAUTEUR" }
+    }
+  },
+  "AILab_LoadImageAdvanced": {
+    "display_name": "Charger l'image avancé (RMBG) 🖼️",
+    "inputs": {
+      "image_path_or_URL": { "name": "Chemin ou URL de l'image" },
       "image": { "name": "Image" },
       "mask_channel": { "name": "Canal de masque" },
+      "upscale_method": { "name": "Méthode d'agrandissement" },
       "scale_by": { "name": "Échelle" },
       "resize_mode": { "name": "Mode de redimensionnement" },
       "size": { "name": "Taille" }
@@ -414,6 +442,22 @@
       "1": { "name": "MASK" },
       "2": { "name": "LARGEUR" },
       "3": { "name": "HAUTEUR" }
+    }
+  },
+  "AILab_ReferenceLatentMask": {
+    "display_name": "Kontext 参考潜伏遮罩 (RMBG) 🎭",
+    "inputs": {
+      "conditioning": { "name": "条件" },
+      "latent": { "name": "latant" },
+      "mask": { "name": "遮罩" },
+      "expand": { "name": "扩展" },
+      "blur": { "name": "模糊" },
+      "mask_only": { "name": "仅遮罩" }
+    },
+    "outputs": {  
+      "0": { "name": "条件" },
+      "1": { "name": "latant" },
+      "2": { "name": "遮罩" }
     }
   }
 }
