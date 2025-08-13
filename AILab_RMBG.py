@@ -312,7 +312,10 @@ class InspyrenetModel(BaseModelLoader):
             
             try:
                 import transparent_background
-                self.model = transparent_background.Remover()
+                if os.path.exists(folder_paths.cache_dir, 'models/transparent-background'):
+                    self.model = transparent_background.Remover(jit=False, device=device, ckpt=os.path.join(folder_paths.cache_dir, "models/transparent-background/ckpt_base.pth"))
+                else:
+                    self.model = transparent_background.Remover()
                 self.current_model_version = model_name
             except ImportError:
                 try:
